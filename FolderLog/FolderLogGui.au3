@@ -33,7 +33,12 @@ GUICtrlSetData($Input1, IniRead("FolderLogGuiSettings.ini", "MRU", "Input", @Hom
 GUICtrlSetData($Input2, IniRead("FolderLogGuiSettings.ini", "MRU", "Output", @DesktopDir & "\files.log"))
 
 If ($CmdLine[0] > 0) Then
-	GUICtrlSetData($Input1, $CmdLine[1])
+	If $Cmdline[1] = "-auto" Then
+		Go()
+		Exit
+	Else
+		GUICtrlSetData($Input1, $CmdLine[1])
+	EndIf
 EndIf
 
 While 1
